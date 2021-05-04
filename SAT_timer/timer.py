@@ -15,6 +15,7 @@ display.grid(row = 1, column = 0, columnspan = 4, pady=10, padx=4)
 label = Label(ui, text = 'time left:')
 label.grid(row = 0, column = 0)
 def timer(NoS, description):
+    start = time.time()
     for remaining in range(NoS, 0, -1):
         a = remaining-(3600*(remaining//3600))
         b = a//60
@@ -27,7 +28,7 @@ def timer(NoS, description):
         display.insert(END, c)
         print(remaining//3600, ':', b, ':', c)
         ui.update()
-        time.sleep(1)
+        time.sleep(1-time.time+start)
     display.delete(0, END)
     display.insert(0, description)
     ui.update()
