@@ -12,14 +12,19 @@ def timer(NoS):
         sys.stdout.write("{:2d} seconds remaining.".format(remaining)) 
         sys.stdout.flush()
         print(remaining//3600, ':', b, ':', c)
-        time.sleep(1-(time.time()-start)-0.0083)
+        time.sleep(1-(time.time()-start)-0.009)
         totalTime += time.time()-start
         print(time.time()-start)
     print("average: " + str(totalTime/NoS))
     print(time.time()-start1)
-    time.sleep(5)
-
-timer(7200)
+start = time.time()
+timer(3900)
+timer(600)
+timer(2100)
+timer(1500)
+timer(300)
+timer(3300)
+print('total: ' + str(time.time()-start))
 '''
 import time
 import sys
