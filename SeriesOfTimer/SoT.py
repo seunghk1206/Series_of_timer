@@ -19,7 +19,9 @@ ui.configure(background = 'gray')
 label = Label(ui, text = 'time left:')
 label.grid(row = 0, column = 0)
 def timer(NoS, description):
+    start1 = time.time()
     for remaining in range(NoS, 0, -1):
+        start = time.time()
         a = remaining-(3600*(remaining//3600))
         b = a//60
         c = remaining-(remaining//3600*3600)-(b*60)
@@ -37,7 +39,8 @@ def timer(NoS, description):
         timerLabelS.grid(row = 1, column = 2)
         print(remaining//3600, ':', b, ':', c)
         ui.update()
-        time.sleep(1)
+        time.sleep(1-(time.time()-start)-0.0025)
+        print((time.time()-start))
     Lodesc = description.split(' ')
     try:
         descLabel = Label(ui, width = 20, height = 10, text = Lodesc[0], font = ('comicsans', 20))
@@ -51,7 +54,7 @@ def timer(NoS, description):
     ui.update()
     print(description)
     alarm.play()
-    time.sleep(5)
+    time.sleep(5-(time.time()-start1))
 
 def SATtimer():
     tempL = []
